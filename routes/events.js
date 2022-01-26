@@ -7,16 +7,17 @@ const { Router } = require("express");
 const { check } = require('express-validator');
 
 const { validateFields } = require('../middlewares/validate-fields');
-const { validarJWT } = require('../middlewares/validar-jwt');
+const { validateJWT } = require("../middlewares/validate-jwt");
 const { getEventos, crearEvento, actualizarEvento, eliminarEvento } = require("../controllers/events");
 const { isDate } = require("../helpers/isDate");
+
 
 
 const router = Router();
 
 
 //Todas tiene que pasar por la validacion del JWT
-router.use(validarJWT);
+router.use(validateJWT);
 
 //Obtener eventos
 router.get('/', getEventos);
